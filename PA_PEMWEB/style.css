@@ -1,0 +1,505 @@
+/* --- Reset & Pengaturan Dasar --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#d64c42
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* --- Sidebar (Navigasi Kiri) --- */
+.sidebar {
+    width: 80px; /* Lebar default (ciut) */
+    height: 100vh;
+    background-color: #8f2c24;
+    color: white;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0 10px 10px 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-x: hidden;
+    transition: width 0.3s ease, padding 0.3s ease;
+    z-index: 100; /* Pastikan sidebar di atas konten */
+}
+
+/* --- STYLE SAAT SIDEBAR DIPERLUAS --- */
+.sidebar.expanded {
+    width: 240px;
+    padding: 20px;
+    align-items: flex-start;
+}
+
+/* --- Konten Sidebar --- */
+.sidebar-top-icon {
+    padding-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+.sidebar-top-icon i {
+    font-size: 3em; /* Ukuran ikon besar */
+}
+.sidebar.expanded .sidebar-top-icon {
+    display: none;
+}
+
+/* Profil Penuh (Saat Diperluas) */
+.user-profile {
+    display: none;
+    align-items: center;
+    margin-bottom: 30px;
+    width: 200px;
+}
+.sidebar.expanded .user-profile.active-state {
+    display: flex;
+}
+.user-profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    border: 2px solid white;
+}
+.user-profile h4 { font-size: 1.1em; margin: 0; }
+.user-profile p { font-size: 0.9em; opacity: 0.8; margin: 0; }
+
+/* Navigasi Penuh (Saat Diperluas) */
+.sidebar-nav {
+    display: none;
+    list-style: none;
+    width: 100%;
+}
+.sidebar.expanded .sidebar-nav.active-state {
+    display: block;
+}
+.sidebar-nav li { margin-bottom: 15px; }
+.sidebar-nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    padding: 8px 12px;
+    display: block;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+.sidebar-nav a.active {
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.sidebar-nav a:hover:not(.active) {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Ikon Hamburger (Selalu di Bawah) */
+.hamburger-menu {
+    margin-top: auto;
+    cursor: pointer;
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 10px;
+}
+.hamburger-menu i {
+    font-size: 2em; /* Ukuran ikon besar */
+}
+.sidebar.expanded .hamburger-menu {
+    align-self: center;
+}
+
+/* --- Konten Utama (Kanan) --- */
+.main-content {
+    flex-grow: 1;
+    margin-left: 80px;
+    padding: 20px;
+    height: 100vh;
+    overflow-y: auto;
+    transition: margin-left 0.3s ease;
+}
+.sidebar.expanded ~ .main-content {
+    margin-left: 240px;
+}
+
+/* --- Header --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* KODE YANG MENGHILANGKAN TOMBOL HOME SEBELUMNYA TELAH DIHAPUS DARI SINI
+*/
+
+.header-left .home-button {
+    background-color: #8f2c24;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.header-right {
+    display: flex;
+    align-items: center;
+}
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.search-bar input {
+    width: 250px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 0.9em;
+    padding-right: 40px;
+}
+.search-bar button {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    color: #777;
+    padding: 0;
+}
+
+/* --- Hero Banner (Halaman Home) --- */
+.hero-banner {
+    background: linear-gradient(135deg, #8f2c24, #8f2c24);
+    border-radius: 20px;
+    padding: 80px 40px;
+    text-align: center;
+    color: white;
+}
+.hero-banner h1 {
+    font-size: 3.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+.hero-banner .welcome-message {
+    background-color: white;
+    color: #8f2c24;
+    padding: 10px 25px;
+    border-radius: 20px;
+    display: inline-block;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+/* --- Dropdown Kategori --- */
+.kategori-container {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+}
+.kategori-button {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 20px;
+    transition: background-color 0.2s;
+}
+.kategori-button:hover {
+    background-color: #eee;
+}
+.kategori-dropdown {
+    display: none;
+    position: absolute;
+    top: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #8f2c24;
+    color: white;
+    border-radius: 15px;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 0;
+    z-index: 10;
+}
+.kategori-dropdown a {
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    font-size: 1em;
+}
+.kategori-dropdown a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.kategori-dropdown.show {
+    display: block;
+}
+
+/* --- Konten Halaman Kategori --- */
+#breadcrumb-container {
+    margin-right: 15px;
+}
+.breadcrumb-tag {
+    background-color: #8f2c24;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+.news-article-container {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.news-article-container h2 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 25px;
+}
+.news-article-content {
+    display: flex;
+    gap: 20px;
+}
+.news-article-text {
+    flex: 1;
+}
+.news-article-text p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #555;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 2px dotted #ccc;
+}
+.news-article-text p:last-child {
+    border-bottom: none;
+}
+.news-article-image {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+/* ================================== */
+/* ====== (BARU) MODAL STYLES ====== */
+/* ================================== */
+
+/* Latar belakang overlay modal */
+.modal {
+    display: none; /* Sembunyi by default */
+    position: fixed; /* Tetap di layar */
+    z-index: 200; /* Di atas segalanya */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Bisa di-scroll jika konten panjang */
+    background-color: rgb(0,0,0); /* Fallback */
+    background-color: rgba(0,0,0,0.5); /* Hitam transparan */
+    padding-top: 60px;
+}
+
+/* Kotak konten modal */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 25px 30px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 400px; /* Lebar maksimum */
+    border-radius: 15px;
+    position: relative;
+}
+
+/* Tombol Close (x) */
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: -10px;
+}
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Gaya Form */
+.modal-form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+.modal-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+.modal-form input[type="text"],
+.modal-form input[type="password"],
+.modal-form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box; /* Penting */
+}
+.modal-form button {
+    width: 100%;
+    background-color: #8f2c24; /* Warna tema */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+}
+.modal-form button:hover {
+    background-color: #d64c42;
+}
+
+/* Link untuk pindah (Daftar/Login) */
+.modal-switch {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+.modal-switch a {
+    color: #8f2c24;
+    font-weight: bold;
+    text-decoration: none;
+}
+.modal-switch a:hover {
+    text-decoration: underline;
+}
+
+/* ================================== */
+/* ====== (BARU) GAYA EDIT PROFIL ====== */
+/* ================================== */
+
+/* Container utama form */
+.edit-profile-container {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 30px 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    max-width: 800px; /* Batasi lebar form */
+    margin: 0 auto; /* Posisikan di tengah */
+}
+
+.edit-profile-container h2 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Grup untuk setiap elemen form (label + input) */
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Gaya untuk input teks dan textarea */
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Gaya khusus untuk input 'readonly' (username) */
+.form-group input[readonly] {
+    background-color: #f5f5f5;
+    color: #777;
+    cursor: not-allowed;
+}
+
+.form-group textarea {
+    resize: vertical; /* Izinkan user mengubah tinggi textarea */
+    min-height: 100px;
+}
+
+/* Gaya untuk grup foto profil */
+.profile-pic-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Preview gambar */
+#picPreview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Bulat */
+    object-fit: cover;
+    border: 3px solid #eee;
+}
+
+/* Sembunyikan input file default */
+#picUpload {
+    display: none;
+}
+
+/* Tombol palsu untuk upload gambar */
+.pic-upload-btn {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+.pic-upload-btn:hover {
+    background-color: #e0e0e0;
+}
+
+/* Tombol Simpan Perubahan */
+.save-btn {
+    background-color: #8f2c24; /* Warna tema */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+.save-btn:hover {
+    background-color: #d64c42;
+}
